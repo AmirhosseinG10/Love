@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import url(footer.css);
+@import url(header.css);
+@import url(reset.css);
+@import url(btn.css);
+@import url(cards.css);
+
+
+html {
+	scroll-behavior: smooth;
+}
+
+@font-face {
+	font-family: "Iranian-Sans";
+	src: url(../fonts/IRANSansWeb.woff) format("woff"),
+		url(../fonts/IRANSansWeb.woff2) format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url(../fonts/Roboto-Light.woff) format("woff"),
+		url(../fonts/Roboto-Light.woff2) format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Shabnam";
+	src: url(../fonts/Shabnam.woff) format("woff"),
+		url(../fonts/Shabnam.woff2) format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+} /*# sourceMappingURL=public.css.map */
+@font-face {
+	font-family: "Vazir";
+	src: url(../fonts/Vazir.woff) format("woff"),
+		url(../fonts/Vazir.woff2) format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	direction: rtl;
+	box-sizing: border-box;
+}
+

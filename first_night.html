@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/public.css">
+    <title>گل آفتابگردان برای سایه</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff9c4;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                /* لایه تیره */
+                url(assets/images/first_night.jpg);
+            /* تصویر اصلی */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            font-family: "Iranian-Sans";
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+
+
+        /* ---------------- بخش اول (گل) ---------------- */
+        #section1 {
+            position: relative;
+            width: 400px;
+            height: 100vh;
+            margin-top: 150px;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        #petals {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 0;
+            left: 0;
+            animation: spin 8s linear infinite;
+            z-index: 1;
+        }
+
+        .flower {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at center, #ffeb3b 40%, #fbc02d 60%);
+            border-radius: 50%;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            transition: transform 1s ease;
+            z-index: 2;
+        }
+
+        .petal-wrapper {
+            position: absolute;
+            width: 200px;
+            height: 270px;
+            top: 65px;
+            left: 100px;
+            transform-origin: center center;
+        }
+
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            background: #ffeb3b;
+            border-radius: 50% 50% 0 0;
+            top: -60px;
+            left: -30px;
+            transform-origin: bottom center;
+        }
+
+        #stem {
+            position: absolute;
+            width: 15px;
+            height: 350px;
+            background-color: #4CAF50;
+            top: 320px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            border-radius: 10px;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background-color: #66BB6A;
+            z-index: 1;
+        }
+
+        #leaf1 {
+            top: 400px;
+            left: 50%;
+            transform: translateX(-100%) rotate(-30deg);
+            border-radius: 0 50% 0 50%;
+        }
+
+        #leaf2 {
+            top: 450px;
+            left: 50%;
+            transform: translateX(0) rotate(30deg);
+            border-radius: 50% 0 50% 0;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #message {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            color: brown;
+            transition: opacity 1s ease;
+            padding: 0 10px;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .open {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .showMessage {
+            opacity: 1 !important;
+        }
+
+        #nextBtn {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            transform: translateX(-50%);
+            background: #ffeb3b;
+            color: brown;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-size: 1.1em;
+            font-family: "Iranian-Sans";
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.8s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nextSectionBtn {
+            background: #ffeb3b;
+            color: brown;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-size: 1.1em;
+            font-family: "Iranian-Sans";
+            cursor: pointer;
+            transition: all 0.8s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #nextBtn:hover,
+        .nextSectionBtn:hover {
+            background: #fbc02d;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .showButton {
+            opacity: 1 !important;
+            bottom: 120px !important;
+        }
+
+        #section2,
+        #section3,
+        #section4,
+        #section5 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+
+        #section2.active,
+        #section3.active,
+        #section4.active,
+        #section5.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #section2 h1,
+        #section3 h1,
+        #section4 h1,
+        #section5 h1 {
+            color: brown;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #section2 p,
+        #section3 p,
+        #section4 p,
+        #section5 p {
+            font-size: 1.1em;
+            color: #5d4037;
+            max-width: 500px;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
+        .en_text {
+            text-align: left;
+            	font-family: "Roboto";
+                direction: ltr;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ---------------- بخش اول ---------------- -->
+    <div id="section1">
+        <div id="petals"></div>
+        <div class="flower" id="flower"></div>
+
+        <div id="stem"></div>
+        <div class="leaf" id="leaf1"></div>
+        <div class="leaf" id="leaf2"></div>
+
+        <div id="message">
+            این گل آفتاب‌گردون تقدیم به آفتاب زندگی‌ام که با آمدنش دنیام رو روشن کرد ❤️‍🔥
+        </div>
+
+        <button id="nextBtn">بریم بخش بعد 🌻</button>
+    </div>
+
+    <!-- ---------------- بخش دوم ---------------- -->
+    <div id="section2">
+        <h1> روزت مبارک عشقم 🌞</h1>
+        <p>
+            سایه من❤️‍🔥 <br>
+            روزت مبارک مهربون ترین دختری که دنیا به خودش دیده😍<br>
+            نمیدونی که چقدر خوشبخت و خوشحالم که تو رو دارم<br>
+
+            هربار که میبنمت<br>
+            هربار که میخندی<br>
+            هربار که دستت رو میگیرم<br>
+            هربار که بغلت میکنم<br>
+            هربار که اذیتم میکنی یا اذیتم میکنم<br>
+            هربار که نازت میکنم<br>
+            هربار که میبوسمت<br>
+            و هر ثانیه که کنار توهم و حتی کنارت نیستم و فقط بهت فکر میکنم احساس میکنم که دوباره و دوباره متولد میشم.
+            <br>
+
+            میدونی اگر هزاربار هم برگردم عقب بازم تو رو انتخاب میکنم<br>
+            تو همه ی دنیای من❤️‍🔥
+        </p>
+        <button class="nextSectionBtn ">بریم بعدی 💫</button>
+    </div>
+
+    <!-- ---------------- بخش سوم ---------------- -->
+    <div id="section3">
+        <h1> دلم برات 💛</h1>
+        <p>
+            دلم می‌خواست الان کنارم بودی، با اون خنده‌ی قشنگت، با اون نگاهی که همه چی رو از یادم می‌بره...
+            دلم می‌خواست فقط نگاهت کنم و بگم "هیچ‌جا خونه‌تر از آغوش تو نیست." 🌻
+        </p>
+        <button class="nextSectionBtn">بریم بعدی 💛</button>
+    </div>
+
+    <!-- ---------------- بخش چهارم ---------------- -->
+    <div id="section4">
+        <h1>پایان؟ نه... شروعِ همیشه 💛</h1>
+        <p>
+            سایه،
+            تو نه فقط عشق منی،
+            تو امید، لبخند و نوری هستی که زندگی‌مو معنی می‌کنی.
+            این هدیه فقط یه گل نیست،
+            یه قولِ بی‌صداست برای “همیشه با تو بودن” 🌞 <br>
+        </p>
+        <p class="en_text">
+            I love you much more than can I tell you and much more than can you think.❤
+        </p>
+        <button class="nextSectionBtn">بریم بعدی 💛</button>
+    </div>
+
+    <!-- ---------------- بخش پنجم ---------------- -->
+    <div id="section5">
+        <h1> سایه‌ی من، تا همیشه 🌞</h1>
+        <p>
+            بدون تو دنیا بی‌معنیه.
+            تو دلیل همه‌ی لبخندها، امیدها و حتی اشک‌هامی.
+            دوستت دارم... برای همیشه ❤️‍🔥
+        </p>
+    </div>
+
+
+    <script>
+        const flower = document.getElementById('flower');
+        const petalsContainer = document.getElementById('petals');
+        const message = document.getElementById('message');
+        const nextBtn = document.getElementById('nextBtn');
+        const sections = [
+            document.getElementById('section1'),
+            document.getElementById('section2'),
+            document.getElementById('section3'),
+            document.getElementById('section4'),
+            document.getElementById('section5')
+        ];
+
+        const petalCount = 20;
+        for (let i = 0; i < petalCount; i++) {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('petal-wrapper');
+            wrapper.style.transform = `rotate(${i * (360 / petalCount)}deg)`;
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            wrapper.appendChild(petal);
+            petalsContainer.appendChild(wrapper);
+        }
+
+        setTimeout(() => {
+            flower.classList.add('open');
+            message.classList.add('showMessage');
+        }, 500);
+
+        setTimeout(() => {
+            nextBtn.classList.add('showButton');
+        }, 4000);
+
+        let currentSection = 0;
+
+        function goToNextSection() {
+            if (currentSection < sections.length - 1) {
+                sections[currentSection].classList.add('fade-out');
+                setTimeout(() => {
+                    sections[currentSection].style.display = 'none';
+                    sections[currentSection + 1].classList.add('active');
+                    currentSection++;
+                }, 1000);
+            }
+        }
+
+        nextBtn.addEventListener('click', goToNextSection);
+        document.querySelectorAll('.nextSectionBtn').forEach(btn => {
+            btn.addEventListener('click', goToNextSection);
+        });
+    </script>
+</body>
+
+</html>

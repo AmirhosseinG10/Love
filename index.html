@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقویم عشقی سایه 🌻</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/public.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #3a3a3a, #1f1f1f);
+            font-family: "Iranian-Sans", "Vazirmatn", sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .carousel-inner img {
+            height: 600px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        h1 {
+            color: #fbc02d;
+            margin: 25px 0;
+            font-weight: 700;
+        }
+
+        .timer-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 15px 25px;
+            color: #fbc02d;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(251, 192, 45, 0.2);
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            background-color: #fffbea;
+            color: #333;
+            overflow: hidden;
+            position: relative;
+            /* مهم برای overlay */
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+        }
+    
+
+        .card img.overlay-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            opacity: 0.4;
+            /* شفافیت overlay */
+            z-index: 0;
+        }
+
+        .card h5,
+        .card a,
+        .card .bi {
+            position: relative;
+            z-index: 1;
+            /* متن و لینک روی عکس باشند */
+        }
+
+
+        .card.locked {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .bi-lock-fill,
+        .bi-unlock-fill {
+            font-size: 3rem;
+            color: #fbc02d;
+        }
+
+        .footer-text {
+            margin-top: 40px;
+            color: #fbc02d;
+            font-size: 0.9rem;
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 1rem 1rem 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4">
+        <div class="row align-items-start">
+
+            <!-- کروسل -->
+            <div class="col-lg-6 mb-4">
+                <div id="sayeCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="assets/images/01.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/02.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/03.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/04.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/05.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/06.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/07.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/08.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/09.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/10.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/11.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/12.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/13.webp" class="d-block w-100" alt="سایه">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#sayeCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#sayeCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- کارت‌ها -->
+            <div class="col-lg-6">
+                <h1 class="text-center">۷ شب عاشقانه با سایه 🌙</h1>
+
+                <div class="timer-box" id="countdownBox">
+                    زمان باقی‌مانده تا باز شدن قفل بعدی: <span id="countdown"></span>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <!-- کارت‌ها -->
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card1">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب اول</h5>
+                            <a href="first_night.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card2">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب دوم</h5>
+                            <a href="page2.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card3">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب سوم</h5>
+                            <a href="page3.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card4">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب چهارم</h5>
+                            <a href="page4.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card5">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب پنجم</h5>
+                            <a href="page5.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card6">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب ششم</h5>
+                            <a href="page6.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card text-center p-3 locked" id="card7">
+                            <i class="bi bi-lock-fill mb-3"></i>
+                            <h5>شب هفتم</h5>
+                            <a href="page7.html" class="stretched-link d-none"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center footer-text mt-4">🌻 ساخته شده با عشق برای سایه 🌻</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        // تاریخ شروع اولین شب
+        const startDate = new Date("2025-10-11T00:00:00");
+
+        // تاریخ فعلی
+        const now = new Date();
+
+        // هر شب ساعت 12 شب باز میشه
+        // تعداد شب هایی که باید باز شده باشند
+        let openNight = 0;
+        for (let i = 0; i < 7; i++) {
+            let nightDate = new Date(startDate);
+            nightDate.setDate(startDate.getDate() + i);
+            nightDate.setHours(24, 0, 0, 0); // نیمه شب همان روز
+
+            if (now >= nightDate) {
+                openNight = i + 1; // این شب باز شده
+            }
+        }
+
+        if (openNight > 0) {
+            const openCard = document.getElementById(`card${openNight}`);
+            if (openCard) {
+                openCard.classList.remove("locked");
+                const icon = openCard.querySelector(".bi");
+                if (icon) icon.remove();
+
+                const img = document.createElement("img");
+                img.src = `assets/images/unlock_${openNight}.jpg`;
+                img.classList.add("overlay-img"); // کلاس overlay
+                openCard.prepend(img);
+
+                const link = openCard.querySelector("a");
+                link.classList.remove("d-none");
+            }
+
+        }
+
+
+        // --- تایمر تا 12 شب ---
+        function updateCountdown() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+
+            const diff = midnight - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const countdown = document.getElementById("countdown");
+            countdown.textContent = `${hours} ساعت و ${minutes} دقیقه و ${seconds} ثانیه`;
+        }
+
+
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>
