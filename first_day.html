@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>بازی مکان‌یابی عاشقانه سایه 🌻</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/public.css">
+    <style>
+        body {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('assets/images/love_map_bg.jpg') center center / cover no-repeat;
+            font-family: "Iranian-Sans", sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        h2 {
+            color: #ffeb3b;
+            margin-bottom: 20px;
+        }
+
+        input {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .btn-custom {
+            background-color: #ffeb3b;
+            border: none;
+            color: #4e342e;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #fbc02d;
+            transform: scale(1.05);
+        }
+
+        .success {
+            color: #ffeb3b;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: #ff5252;
+            font-size: 0.9em;
+        }
+
+        .hint-box {
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #fff;
+            animation: fadeIn 1s ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-container">
+        <h2>🌻 بازی مکان‌یابی عشق 🌻</h2>
+        <p class="mb-4">سایه‌ی من، هر مرحله رو با پیدا کردن پاسخ درست باز کن 💛</p>
+
+        <!-- 📦 باکس ثابت برای نمایش همه‌ی هینت‌ها -->
+        <div id="allHints" class="mb-4"></div>
+
+        <!-- مرحله‌ها -->
+        <div id="step1" class="step">
+            <p>📍 مرحله اول: جایی که اولین بار همو ملاقات کردیم کجا بود؟</p>
+            <input type="text" class="form-control mb-2" id="answer1" placeholder="پاسخ را وارد کن">
+            <button class="btn btn-custom" onclick="checkAnswer(1)">بررسی</button>
+            <div id="msg1" class="mt-3"></div>
+        </div>
+
+        <div id="step2" class="step hidden">
+            <p>💌 مرحله دوم: رمز رو وارد کن؟</p>
+            <input type="text" class="form-control mb-2" id="answer2" placeholder="پاسخ را وارد کن">
+            <button class="btn btn-custom" onclick="checkAnswer(2)">بررسی</button>
+            <div id="msg2" class="mt-3"></div>
+        </div>
+
+        <div id="step3" class="step hidden">
+            <p>🌙 مرحله سوم: کد کد کد!!!!!</p>
+            <input type="text" class="form-control mb-2" id="answer3" placeholder="پاسخ را وارد کن">
+            <button class="btn btn-custom" onclick="checkAnswer(3)">بررسی</button>
+            <div id="msg3" class="mt-3"></div>
+        </div>
+
+        <div id="step4" class="step hidden">
+            <p>❤ مرحله چهارم: منتظرتم</p>
+            <input type="text" class="form-control mb-2" id="answer4" placeholder="پاسخ را وارد کن">
+            <button class="btn btn-custom" onclick="checkAnswer(4)">بررسی</button>
+            <div id="msg4" class="mt-3"></div>
+        </div>
+
+        <div id="step5" class="step hidden">
+            <p>🌻 مرحله پنجم: چی نوشته رو گل؟</p>
+            <input type="text" class="form-control mb-2" id="answer5" placeholder="پاسخ را وارد کن">
+            <button class="btn btn-custom" onclick="checkAnswer(5)">بررسی</button>
+            <div id="msg5" class="mt-3"></div>
+        </div>
+
+        <!-- پایان بازی -->
+        <div id="finalStep" class="hidden">
+            <h3 class="text-warning">🌞 آفرین سایه من 🌞</h3>
+            <p>همه رو درست گفتی، حالا مسیر عشق باز شد 💛<br>دوستت دارم تا بی‌نهایت و فراتر از اون 💫</p>
+            <div class="hint-box">📍 راهنمایی نهایی: من اونجا منتظرم که اولین بار به هم لبخند زدی 💛</div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            1: "1509",
+            2: "1234",
+            3: "1310",
+            4: "1111",
+            5: "love"
+        };
+
+        const hints = {
+            1: "🗺️  سرنخ بعدی: مسیرت رو از جایی شروع کن که همیشه ازش استفاده میکنی و حمل و نقل ات رو راحت میکنه... توی ورودی اش باید رو رمز رو پیدا کنی ☕",
+            2: "🚶‍♀️ یه پارک نزدیک جایی که ایستادی هست که ما خیلی توش خاطره داریم و نزدیک جایی که اکثرن میشینم کد رو پیدا میکنی 🍃",
+            3: "💛 خب خب خب حالا که املت رو برداشتی وقتش هست که بیای پاتوق بعد از دانشگاه مون ",
+            4: "🌻 نزدیک شدی... یه گل آفتاب‌گردون اون اطراف منتظرته ",
+            5: "💌 فقط چند قدم مونده تا منو پیدا کنی سایه من 💫"
+        };
+
+        function normalizeInput(text) {
+            return text.trim().replace(/\s+/g, '').toLowerCase();
+        }
+
+        function checkAnswer(step) {
+            const input = document.getElementById(`answer${step}`);
+            const msg = document.getElementById(`msg${step}`);
+            const value = normalizeInput(input.value);
+            const allHintsBox = document.getElementById("allHints");
+
+            if (value === normalizeInput(answers[step])) {
+                msg.innerHTML = "<span class='success'>✅ آفرین عشقم! برو مرحله بعد 💛</span>";
+
+                // ✅ افزودن هینت به باکس بالایی بدون حذف قبلی‌ها
+                const hintDiv = document.createElement("div");
+                hintDiv.classList.add("hint-box");
+                hintDiv.textContent = hints[step];
+                allHintsBox.appendChild(hintDiv);
+
+                setTimeout(() => {
+                    document.getElementById(`step${step}`).classList.add("hidden");
+                    if (step < 5) {
+                        document.getElementById(`step${step + 1}`).classList.remove("hidden");
+                    } else {
+                        document.getElementById("finalStep").classList.remove("hidden");
+                    }
+                }, 2000);
+            } else {
+                msg.innerHTML = "<span class='error'>❌ نه عزیزم، یه کم دیگه فکر کن 😘</span>";
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

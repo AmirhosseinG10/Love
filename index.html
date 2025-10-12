@@ -53,7 +53,7 @@
             align-items: center;
             justify-content: center;
         }
-    
+
 
         .card img.overlay-img {
             position: absolute;
@@ -187,7 +187,7 @@
                             </div>
                         </a>
                     </div>
-                    
+
                     <div class="col-6">
                         <a href="page2.html" class="text-decoration-none">
                             <div class="card text-center p-3 locked" id="card2">
@@ -248,70 +248,107 @@
 
                 <p class="text-center footer-text mt-4">🌻 ساخته شده با عشق برای سایه 🌻</p>
             </div>
+
+
+            <hr class="my-5" style="border-color: rgba(255,255,255,0.2);">
+
+            <h2 class="text-center mb-4 text-warning">🌞 روزهای عاشقانه 🌞</h2>
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-6">
+                    <a href="first_day.html" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <img src="assets/images/love_map_bg.jpg" class="overlay-img">
+                            <h5>روز اول</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- <div class="col-6">
+                    <a href="day2.html" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <img src="assets/images/day2.jpg" class="overlay-img">
+                            <h5>روز دوم</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-6">
+                    <a href="day3.html" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <img src="assets/images/day3.jpg" class="overlay-img">
+                            <h5>روز سوم</h5>
+                        </div>
+                    </a>
+                </div> -->
+
+            </div>
+
         </div>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
 
         // تاریخ شروع اولین شب
-        const startDate = new Date("2025-10-11T00:00:00");
+        const startDate = new Date("2025-10-12T00:00:00");
 
         // تاریخ فعلی
         const now = new Date();
 
-        // هر شب ساعت 12 شب باز میشه
-        // تعداد شب هایی که باید باز شده باشند
+        // هر شب ساعت 00:00 شب باز میشه
         let openNight = 0;
         for (let i = 0; i < 7; i++) {
             let nightDate = new Date(startDate);
             nightDate.setDate(startDate.getDate() + i);
-            nightDate.setHours(24, 0, 0, 0); // نیمه شب همان روز
+            nightDate.setHours(0, 0, 0, 0); // شروع شب جدید (همان روز 00:00)
 
             if (now >= nightDate) {
-                openNight = i + 1; // این شب باز شده
+                openNight = i + 1; // این شب باید باز باشد
             }
         }
 
-        if (openNight > 0) {
-            const openCard = document.getElementById(`card${openNight}`);
-            if (openCard) {
-                openCard.classList.remove("locked");
-                const icon = openCard.querySelector(".bi");
+        // باز کردن کارت شب‌های باز شده
+        for (let i = 1; i <= openNight; i++) {
+            const card = document.getElementById(`card${i}`);
+            if (card) {
+                card.classList.remove("locked");
+                const icon = card.querySelector(".bi");
                 if (icon) icon.remove();
 
                 const img = document.createElement("img");
-                img.src = `assets/images/unlock_${openNight}.jpg`;
-                img.classList.add("overlay-img"); // کلاس overlay
-                openCard.prepend(img);
-
-                const link = openCard.querySelector("a");
-                link.classList.remove("d-none");
+                img.src = `assets/images/unlock_${i}.jpg`;
+                img.classList.add("overlay-img");
+                card.prepend(img);
             }
-
         }
-
 
         // --- تایمر تا 12 شب ---
         function updateCountdown() {
             const now = new Date();
             const midnight = new Date();
-            midnight.setHours(24, 0, 0, 0);
+            midnight.setHours(24, 0, 0, 0); // 12 شب امشب
 
             const diff = midnight - now;
+            if (diff <= 0) {
+                document.getElementById("countdown").textContent = "✨ وقت باز شدن شب بعدی رسیده!";
+                return;
+            }
+
             const hours = Math.floor(diff / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            const countdown = document.getElementById("countdown");
-            countdown.textContent = `${hours} ساعت و ${minutes} دقیقه و ${seconds} ثانیه`;
+            document.getElementById("countdown").textContent =
+                `${hours} ساعت و ${minutes} دقیقه و ${seconds} ثانیه`;
         }
-
-
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
     </script>
 </body>
 
