@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>کروسل تصاویر — برای سایه</title>
+
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/public.css">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #fffdf2 0%, #fff7d9 100%);
+            padding: 2rem;
+            font-family: "Iranian-Sans";
+        }
+
+        .carousel {
+            --bs-carousel-control-bg: rgba(0, 0, 0, 0.35);
+            --bs-carousel-indicator-width: 10px;
+            --bs-carousel-indicator-height: 10px;
+        }
+
+        .carousel-item>img {
+            width: 100%;
+            height: 75vh;
+            /* responsive height */
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            transition: transform .8s cubic-bezier(.2, .9, .2, 1);
+            will-change: transform;
+        }
+
+        /* subtle zoom on active + hover */
+        .carousel-item.active>img,
+        .carousel-item img:hover {
+            transform: scale(1.03);
+        }
+
+        .caption-area {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 12px 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            color: #222;
+        }
+
+        .caption-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .caption-sub {
+            font-size: .9rem;
+            color: #666;
+        }
+
+        /* indicators style */
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        .carousel-indicators .active {
+            background-color: #f6c84c;
+            box-shadow: 0 0 0 4px rgba(246, 200, 76, 0.18);
+        }
+
+        /* responsive tweaks */
+        @media (max-width: 768px) {
+            .carousel-item>img {
+                height: 44vh;
+            }
+
+            .caption-title {
+                font-size: 0.98rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card shadow-sm border-0 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">حالا نگاه کن... 📸</h3>
+                <small class="text-muted">اسلایدها را می‌تونی با آیکون‌ها یا انگشت جلو ببری</small>
+            </div>
+
+            <div id="loveCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500"
+                data-bs-pause="hover">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <!-- 20 indicators -->
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="اسلاید 1"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="1"
+                        aria-label="اسلاید 2"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="2"
+                        aria-label="اسلاید 3"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="3"
+                        aria-label="اسلاید 4"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="4"
+                        aria-label="اسلاید 5"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="5"
+                        aria-label="اسلاید 6"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="6"
+                        aria-label="اسلاید 7"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="7"
+                        aria-label="اسلاید 8"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="8"
+                        aria-label="اسلاید 9"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="9"
+                        aria-label="اسلاید 10"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="10"
+                        aria-label="اسلاید 11"></button>
+                    <button type="button" data-bs-target="#loveCarousel" data-bs-slide-to="11"
+                        aria-label="اسلاید 12"></button>
+
+                </div>
+
+                <!-- Slides -->
+                <div class="carousel-inner">
+                    <!-- Slide template (repeat for 20 slides). Replace src with your images -->
+                    <!-- I'm using Unsplash random sunflower/photo queries with different sig to vary images -->
+                    <div class="carousel-item active">
+                        <img src="assets/images/14.webp" class="d-block w-100" alt="تصویر 1">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">مترو گردی</div>
+                            <div class="caption-sub">اولین باری که از مترو ۲ طبقه استفاده کردیم</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/images/01.webp" class="d-block w-100" alt="تصویر 2">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">خنده‌های تو</div>
+                            <div class="caption-sub">تو که می‌خندی، دنیا رنگ دیگری می‌گیرد.</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/images/15.webp" class="d-block w-100" alt="تصویر 3">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">یک ناهار دو نفره</div>
+                            <div class="caption-sub">لحظه‌هایی که فقط برای ما هستند.</div>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <img src="assets/images/16.webp" class="d-block w-100" alt="تصویر 6">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">کنار هم توی باغ کتاب</div>
+                            <div class="caption-sub">باغ کتاب جایی که کلی ازش خاطره داریم</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/images/09.webp" class="d-block w-100" alt="تصویر 7">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">جزئیات طلایی</div>
+                            <div class="caption-sub">در چیزهای کوچک هم تو را می‌بینم.</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/images/17.webp" class="d-block w-100" alt="تصویر 8">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">نزدیکِ نزدیک</div>
+                            <div class="caption-sub">وقتی کنارم هستی، دنیا امن است.</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/images/preview.jpg" class="d-block w-100" alt="تصویر 9">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">قابِ خاطره</div>
+                            <div class="caption-sub">قاب‌هایی که پر از ما هستند.</div>
+                        </div>
+                    </div>
+
+                    <!-- slides 11-20 -->
+                    <div class="carousel-item">
+                        <img src="assets/images/18.webp" class="d-block w-100" alt="">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title"> لبخندِ آفتاب</div>
+                            <div class="caption-sub">تو مثل خورشیدی که اطراف را روشن می‌کند.</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/images/19.webp" class="d-block w-100" alt="">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title"> لمسِ آرام</div>
+                            <div class="caption-sub">لمس تو تمام دردها را کم می‌کند.</div>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <img src="assets/images/20.webp" class="d-block w-100" alt="">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title"> نزدیک و دوست‌داشتنی</div>
+                            <div class="caption-sub">در کنار تو بودن، هدیۀ منه.</div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="carousel-item">
+                        <img src="assets/images/04.webp" class="d-block w-100" alt="">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">عکس ۱۸ — خندهٔ همیشگی</div>
+                            <div class="caption-sub">خندهٔ تو طلایی‌ترین موسیقی‌ست.</div>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <img src="assets/images/13.webp" class="d-block w-100">
+                        <div class="caption-area mx-auto mt-3" style="max-width:900px">
+                            <div class="caption-title">عکس ۲۰ — آفتابِ همیشگی</div>
+                            <div class="caption-sub">تو آفتابِ منی؛ همیشه و همیشه.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#loveCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">قبلی</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#loveCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">بعدی</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // small enhancement: pause on focus, resume on blur
+        const carouselEl = document.getElementById('loveCarousel');
+        carouselEl.addEventListener('mouseenter', () => { bootstrap.Carousel.getInstance(carouselEl).pause(); });
+        carouselEl.addEventListener('mouseleave', () => { bootstrap.Carousel.getInstance(carouselEl).cycle(); });
+
+        // lazy-load images (modern browsers auto-lazy load with loading="lazy")
+        document.querySelectorAll('.carousel-item img').forEach(img => {
+            img.setAttribute('loading', 'lazy');
+        });
+    </script>
+</body>
+
+</html>
